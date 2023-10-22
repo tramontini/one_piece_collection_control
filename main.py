@@ -58,8 +58,7 @@ def get_card_list(url: str, cards_image_values: list):
 
 def add_card_to_sheets(data_to_insert: list, sheet_number: int):
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('op-planilha-f607b95831c3.json',
-                                                             scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name('credential.json', scope)
     client = gspread.authorize(creds)
 
     sheet = client.open("op_collection").get_worksheet(sheet_number)
