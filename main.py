@@ -103,7 +103,7 @@ if __name__ == '__main__':
     response = requests.get(one_piece_website_url)
 
     if response.status_code != 200:
-        print("Failed to retrieve the webpage.")
+        logging.info("Failed to retrieve the webpage.")
         exit()
 
     for collection_name, collection_details in COLLECTION_SERIES_DICT.items():
