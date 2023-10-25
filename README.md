@@ -24,6 +24,10 @@ This tool is designed for One Piece TCG enthusiasts who want to track and manage
 Change the name of op_collection to your sheet name, and don't forget to change the index of the sheets in the collection dict the way you want
 ```sheet = client.open("op_collection").get_worksheet(sheet_number)```
 
+## Sheets Screenshot
+![image](https://github.com/tramontini/one_piece_collection_control/assets/25264937/16f38088-49f0-4481-9cfe-f3cdb290a6f4)
+
+
 
 ## Contributing
 Feel free to send any customization, bug fix or improvements! Just send your PR!
