@@ -89,8 +89,10 @@ def add_card_to_sheets(data_to_insert: list, sheet_number: int):
                 
                 # Add a random delay between 1 and 2 seconds
                 time.sleep(random.uniform(1, 2))
+
+                translated_card_name = f'=GOOGLETRANSLATE("{card_name}", "ja", "en")'
                 
-                sheet.append_row([name, card_name, image.replace("'", "")], 'USER_ENTERED')
+                sheet.append_row([name, translated_card_name, image.replace("'", "")], 'USER_ENTERED')
                 card_idx += 1
             break
         except gspread.exceptions.APIError as e:
