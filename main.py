@@ -5,17 +5,10 @@ import time
 import gspread
 import logging
 import random
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from oauth2client.service_account import ServiceAccountCredentials
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-#TODO Use the button of search series instead of the freeword
 
 # In your google sheet, create as many sheets as there are collections in here (20)
 COLLECTION_SERIES_DICT = {
@@ -145,7 +138,9 @@ if __name__ == '__main__':
         logging.info(f'Running for collection {collection_name}')
         form_response = send_search_form(base_url_response=response, collection_search=collection_name,
                                          collection_series=collection_details['series'])
-        print(form_response)
+        if form_response.status_code != 200:
+            logging.info("Failed to connect with the form.")
+            exit()
 
         soup_after_form = BeautifulSoup(form_response.content, 'html.parser')
 
